@@ -7,16 +7,16 @@ public class WordFrequencyGame {
     private static final String CALCULATE_ERROR = "Calculate Error";
     private static final String DELIMITER_NEWLINE = "\n";
 
-    public String getResult(String inputStr) {
+    public String getResult(String sentence) {
 
 
-        if (inputStr.split(SPACE_PATTERN).length == 1) {
-            return inputStr + " 1";
+        if (sentence.split(SPACE_PATTERN).length == 1) {
+            return sentence + " 1";
         } else {
 
             try {
 
-                List<WordInfo> wordInfoList = calculateWordFrequency(inputStr);
+                List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
 
                 wordInfoList.sort((word1, word2) -> word2.getCount() - word1.getCount());
 
