@@ -8,16 +8,13 @@ public class WordFrequencyGame {
     private static final String DELIMITER_NEWLINE = "\n";
 
     public String getResult(String sentence) {
-        try {
+        if (sentence == null) return CALCULATE_ERROR;
             StringJoiner sentenceJoiner = new StringJoiner(DELIMITER_NEWLINE);
             calculateWordFrequency(sentence).stream()
                     .sorted(Comparator.comparing(WordInfo::getCount).reversed()).forEach(wordInfo ->
                             sentenceJoiner.add(wordInfo.getWord() + " " + wordInfo.getCount())
                     );
             return sentenceJoiner.toString();
-        } catch (Exception e) {
-            return CALCULATE_ERROR;
-        }
     }
 
     private List<WordInfo> calculateWordFrequency(String sentence) {
