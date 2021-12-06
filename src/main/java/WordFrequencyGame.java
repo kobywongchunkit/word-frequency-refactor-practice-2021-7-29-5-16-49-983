@@ -40,8 +40,7 @@ public class WordFrequencyGame {
 
                 StringJoiner joiner = new StringJoiner("\n");
                 for (WordInfo wordInfo : wordInfoList) {
-                    String s = wordInfo.getWord() + " " + wordInfo.getCount();
-                    joiner.add(s);
+                    joiner.add(wordInfo.getWord() + " " + wordInfo.getCount());
                 }
                 return joiner.toString();
             } catch (Exception e) {
