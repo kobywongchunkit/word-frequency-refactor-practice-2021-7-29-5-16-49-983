@@ -8,26 +8,25 @@ public class WordFrequencyGame {
     private static final String DELIMITER_NEWLINE = "\n";
 
     public String getResult(String sentence) {
-            try {
-                StringJoiner sentenceJoiner = new StringJoiner(DELIMITER_NEWLINE);
-                calculateWordFrequency(sentence).stream()
-                        .sorted(Comparator.comparing(WordInfo::getCount).reversed()).forEach( wordInfo ->
-                                sentenceJoiner.add(wordInfo.getWord() + " " + wordInfo.getCount())
-                        );
-                return sentenceJoiner.toString();
-            } catch (Exception e) {
-                return CALCULATE_ERROR;
-            }
-
+        try {
+            StringJoiner sentenceJoiner = new StringJoiner(DELIMITER_NEWLINE);
+            calculateWordFrequency(sentence).stream()
+                    .sorted(Comparator.comparing(WordInfo::getCount).reversed()).forEach(wordInfo ->
+                            sentenceJoiner.add(wordInfo.getWord() + " " + wordInfo.getCount())
+                    );
+            return sentenceJoiner.toString();
+        } catch (Exception e) {
+            return CALCULATE_ERROR;
+        }
     }
 
-    private List<WordInfo>calculateWordFrequency(String sentence){
+    private List<WordInfo> calculateWordFrequency(String sentence) {
         List<String> words = Arrays.asList(sentence.split(SPACE_PATTERN));
         List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
         List<WordInfo> wordInfos = new ArrayList<>();
-        distinctWords.forEach( distinctWord -> {
+        distinctWords.forEach(distinctWord -> {
             int frequency = (int) words.stream().filter(word -> word.equals(distinctWord)).count();
-            wordInfos.add(new WordInfo(distinctWord, frequency)) ;
+            wordInfos.add(new WordInfo(distinctWord, frequency));
         });
         return wordInfos;
     }
