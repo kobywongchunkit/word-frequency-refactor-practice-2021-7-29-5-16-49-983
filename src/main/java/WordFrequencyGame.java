@@ -8,6 +8,7 @@ public class WordFrequencyGame {
 
     private static final String SPACE_PATTERN = "\\s+";
     private static final String CALCULATE_ERROR = "Calculate Error";
+    private static final String DELIMITER_NEWLINE = "\n";
 
     public String getResult(String inputStr) {
 
@@ -39,7 +40,7 @@ public class WordFrequencyGame {
 
                 wordInfoList.sort((word1, word2) -> word2.getCount() - word1.getCount());
 
-                StringJoiner joiner = new StringJoiner("\n");
+                StringJoiner joiner = new StringJoiner(DELIMITER_NEWLINE);
                 for (WordInfo wordInfo : wordInfoList) {
                     joiner.add(wordInfo.getWord() + " " + wordInfo.getCount());
                 }
