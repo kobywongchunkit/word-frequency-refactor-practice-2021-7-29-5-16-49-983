@@ -12,7 +12,7 @@ public class WordInfo {
         return this.value;
     }
 
-    public int getWordCount() {
+    public int getCount() {
         return this.count;
     }
 
