@@ -9,12 +9,12 @@ public class WordFrequencyGame {
 
     public String getResult(String sentence) {
         if (sentence == null) return CALCULATE_ERROR;
-            StringJoiner sentenceJoiner = new StringJoiner(DELIMITER_NEWLINE);
-            calculateWordFrequency(sentence).stream()
-                    .sorted(Comparator.comparing(WordInfo::getCount).reversed()).forEach(wordInfo ->
-                            sentenceJoiner.add(wordInfo.getWord() + " " + wordInfo.getCount())
-                    );
-            return sentenceJoiner.toString();
+        StringJoiner sentenceJoiner = new StringJoiner(DELIMITER_NEWLINE);
+        calculateWordFrequency(sentence).stream()
+                .sorted(Comparator.comparing(WordInfo::getCount).reversed()).forEach(wordInfo ->
+                        sentenceJoiner.add(wordInfo.getWord() + " " + wordInfo.getCount())
+                );
+        return sentenceJoiner.toString();
     }
 
     private List<WordInfo> calculateWordFrequency(String sentence) {
