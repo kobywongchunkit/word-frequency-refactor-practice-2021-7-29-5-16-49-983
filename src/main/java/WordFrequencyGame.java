@@ -8,11 +8,14 @@ public class WordFrequencyGame {
     private static final String DELIMITER_NEWLINE = "\n";
 
     public String getResult(String sentence) {
-        if (sentence == null) return CALCULATE_ERROR;
+        try{
         return calculateWordFrequency(sentence).stream()
                 .sorted(Comparator.comparing(WordInfo::getCount).reversed())
                 .map(wordInfo -> String.format("%s %d",wordInfo.getWord(),wordInfo.getCount()))
                 .collect(Collectors.joining(DELIMITER_NEWLINE));
+        }catch(Exception e){
+            return CALCULATE_ERROR;
+        }
     }
 
     private List<WordInfo> calculateWordFrequency(String sentence) {
