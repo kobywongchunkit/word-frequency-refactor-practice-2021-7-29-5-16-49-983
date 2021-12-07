@@ -9,10 +9,10 @@ public class WordFrequencyGame {
 
     public String getResult(String sentence) {
         try{
-        return calculateWordFrequency(sentence).stream()
-                .sorted(Comparator.comparing(WordInfo::getCount).reversed())
-                .map(wordInfo -> String.format("%s %d",wordInfo.getWord(),wordInfo.getCount()))
-                .collect(Collectors.joining(DELIMITER_NEWLINE));
+            return calculateWordFrequency(sentence).stream()
+                    .sorted(Comparator.comparing(WordInfo::getCount).reversed())
+                    .map(wordInfo -> String.format("%s %d",wordInfo.getWord(),wordInfo.getCount()))
+                    .collect(Collectors.joining(DELIMITER_NEWLINE));
         }catch(Exception e){
             return CALCULATE_ERROR;
         }
